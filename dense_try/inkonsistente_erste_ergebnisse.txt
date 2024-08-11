@@ -1,0 +1,100 @@
+2024-08-11 23:21:03.891870: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-08-11 23:21:06.195426: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Starting the script...
+laden der asphalt daten...
+laden der cobblestone daten...
+laden der paving_stone daten...
+alle daten wurden geladen und kombiniert.
+
+trainings label verteilung:
+Label
+paving_stone    43000
+asphalt         33685
+cobblestone     12000
+Name: count, dtype: int64
+
+test label verteilung:
+Label
+paving_stone    10000
+asphalt          8000
+cobblestone      3000
+Name: count, dtype: int64
+daten wurden in trainings und testdaten aufgeteilt...
+C:\Python312\Lib\site-packages\keras\src\layers\core\dense.py:87: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
+2024-08-11 23:21:11.155178: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+training des modells...
+Epoch 1/20
+1386/1386 ━━━━━━━━━━━━━━━━━━━━ 5s 3ms/step - accuracy: 0.5135 - loss: 1.0137 - val_accuracy: 0.6653 - val_loss: 0.6862
+Epoch 2/20
+1386/1386 ━━━━━━━━━━━━━━━━━━━━ 4s 2ms/step - accuracy: 0.6304 - loss: 0.7372 - val_accuracy: 0.6781 - val_loss: 0.6650
+Epoch 3/20
+1386/1386 ━━━━━━━━━━━━━━━━━━━━ 3s 2ms/step - accuracy: 0.6374 - loss: 0.7307 - val_accuracy: 0.6879 - val_loss: 0.6406
+Epoch 4/20
+1386/1386 ━━━━━━━━━━━━━━━━━━━━ 4s 3ms/step - accuracy: 0.6459 - loss: 0.7253 - val_accuracy: 0.6884 - val_loss: 0.6353
+Epoch 5/20
+1386/1386 ━━━━━━━━━━━━━━━━━━━━ 4s 3ms/step - accuracy: 0.6498 - loss: 0.7175 - val_accuracy: 0.6930 - val_loss: 0.6345
+Epoch 6/20
+1386/1386 ━━━━━━━━━━━━━━━━━━━━ 4s 3ms/step - accuracy: 0.6489 - loss: 0.7180 - val_accuracy: 0.6942 - val_loss: 0.6330
+Epoch 7/20
+1386/1386 ━━━━━━━━━━━━━━━━━━━━ 5s 4ms/step - accuracy: 0.6490 - loss: 0.7132 - val_accuracy: 0.6931 - val_loss: 0.6264
+Epoch 8/20
+1386/1386 ━━━━━━━━━━━━━━━━━━━━ 4s 3ms/step - accuracy: 0.6541 - loss: 0.7061 - val_accuracy: 0.6990 - val_loss: 0.6149
+Epoch 9/20
+1386/1386 ━━━━━━━━━━━━━━━━━━━━ 4s 3ms/step - accuracy: 0.6535 - loss: 0.7015 - val_accuracy: 0.6977 - val_loss: 0.6176
+Epoch 10/20
+1386/1386 ━━━━━━━━━━━━━━━━━━━━ 4s 3ms/step - accuracy: 0.6569 - loss: 0.6949 - val_accuracy: 0.7022 - val_loss: 0.6177
+Epoch 11/20
+1386/1386 ━━━━━━━━━━━━━━━━━━━━ 4s 2ms/step - accuracy: 0.6625 - loss: 0.6918 - val_accuracy: 0.7030 - val_loss: 0.6160
+657/657 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step    
+
+klassifikationsbericht:
+              precision    recall  f1-score   support
+
+           0       0.64      0.67      0.65      8000
+           1       0.85      0.94      0.89      3000
+           2       0.70      0.65      0.68     10000
+
+    accuracy                           0.70     21000
+   macro avg       0.73      0.75      0.74     21000
+weighted avg       0.70      0.70      0.70     21000
+
+
+confusion matrix:
+[[5341   54 2605]
+ [   2 2827  171]
+ [3036  454 6510]]
+skript wurde in 46.70 sekunden abgeschlossen.
+
+speichere modell...
+Saved artifact at 'C:\Users\easyd\AppData\Local\Temp\tmpr6_coulc'. The following endpoints are available:
+
+* Endpoint 'serve'
+  args_0 (POSITIONAL_ONLY): TensorSpec(shape=(None, 6), dtype=tf.float32, name='keras_tensor')
+Output Type:
+  TensorSpec(shape=(None, 3), dtype=tf.float32, name=None)
+Captures:
+  1985631311184: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  1985631318096: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  1985631306768: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  1985631312912: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  1985631311376: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  1985631312528: TensorSpec(shape=(), dtype=tf.resource, name=None)
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1723411318.224799   23068 tf_tfl_flatbuffer_helpers.cc:392] Ignored output_format.
+W0000 00:00:1723411318.226872   23068 tf_tfl_flatbuffer_helpers.cc:395] Ignored drop_control_dependency.
+2024-08-11 23:21:58.231748: I tensorflow/cc/saved_model/reader.cc:83] Reading SavedModel from: C:\Users\easyd\AppData\Local\Temp\tmpr6_coulc
+2024-08-11 23:21:58.237335: I tensorflow/cc/saved_model/reader.cc:52] Reading meta graph with tags { serve }
+2024-08-11 23:21:58.237686: I tensorflow/cc/saved_model/reader.cc:147] Reading SavedModel debug info (if present) from: C:\Users\easyd\AppData\Local\Temp\tmpr6_coulc
+2024-08-11 23:21:58.254721: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:388] MLIR V1 optimization pass is not enabled
+2024-08-11 23:21:58.257973: I tensorflow/cc/saved_model/loader.cc:236] Restoring SavedModel bundle.
+2024-08-11 23:21:58.367772: I tensorflow/cc/saved_model/loader.cc:220] Running initialization op on SavedModel bundle at path: C:\Users\easyd\AppData\Local\Temp\tmpr6_coulc
+2024-08-11 23:21:58.401088: I tensorflow/cc/saved_model/loader.cc:462] SavedModel load for tags { serve }; Status: success: OK. Took 170186 microseconds.
+2024-08-11 23:21:58.481562: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+
+TFLite model größe: 3.53 KB
+modell wurde gespeichert...
+model wurde als c array gespeichert...
+skript abgeschlossen.
+
